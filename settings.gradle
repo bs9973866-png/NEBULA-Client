@@ -1,3 +1,18 @@
-pluginManagement { repositories { maven { url = 'https://maven.fabricmc.net/' }; gradlePluginPortal() } }
-dependencyResolutionManagement { repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS); repositories { mavenCentral(); maven { url = 'https://maven.fabricmc.net/' } } }
+pluginManagement {
+    repositories {
+        maven { url = 'https://maven.fabricmc.net/' }
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    // Fabric Loom adds LoomLocalRemappedMods during plugin setup.
+    // PREFER_PROJECT is required so Gradle allows that repository.
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
+    repositories {
+        mavenCentral()
+        maven { url = 'https://maven.fabricmc.net/' }
+    }
+}
+
 rootProject.name = 'nebula-client'
